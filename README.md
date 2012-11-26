@@ -1,6 +1,6 @@
 # SDStockKit
 
-`SDStockKit` is a simple framework for interacting with Yahoo's Finance API. Each formatter abstracts away the complex business logic of their respective domain, so that you can focus on the more important aspects of your application.
+`SDStockKit` is a simple framework for interacting with Yahoo's Finance API. 
 
 
 ## Demo
