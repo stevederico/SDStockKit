@@ -1,13 +1,14 @@
 //
-//  SDStock.m
+//  SDStockManager.h
 //  SimpleStocks
 //
 //  Created by Steve Derico on 11/26/12.
 //  Copyright (c) 2012 Bixby Apps. All rights reserved.
 //
 
-#import "SDStock.h"
+#import <Foundation/Foundation.h>
 
-@implementation SDStock
+@interface SDStockManager : NSObject
++ (SDStockManager *)sharedManager;
 
 @end
