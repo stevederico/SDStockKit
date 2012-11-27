@@ -34,7 +34,7 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showAddStock)];
     self.navigationItem.rightBarButtonItem = addButton;
     [[SDStockManager sharedManager] setDelegate:self];
-    [[SDStockManager sharedManager] stockInfoWithSymbol:@"GOOG"];
+    [[SDStockManager sharedManager] stockPriceWithSymbol:@"GOOG"];
     
 }
 
@@ -240,8 +240,6 @@
 - (void)showAddStock{
     AddStockViewController *addStockViewController = [[AddStockViewController alloc] initWithNibName:@"AddStockViewController" bundle:nil];
     [self.navigationController pushViewController:addStockViewController animated:YES];
-    
-
 }
 
 
@@ -251,6 +249,12 @@
 
     NSLog(@"STOCKINFO: %@",stockInfo);
 
+}
+
+-(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol{
+    
+    NSLog(@"Stock: %@ Price: %@",symbol,stockPrice);
+    
 }
 
 @end

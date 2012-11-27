@@ -8,6 +8,8 @@ Add Stock Screen
 
 
 SDStockKit
+Added Async Stock Info
 Add Delegate to SDStockManager
--Add Get Price to SDStockManager
+Add Async Stock Price
+-Add Syn Price to SDStockManager
 -Refactor getInfo Parse

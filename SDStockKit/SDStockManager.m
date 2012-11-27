@@ -14,6 +14,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
 @implementation SDStockManager
 
 @synthesize stockSymbol = _stockSymbol;
+@synthesize delegate = _delegate;
 
 +(SDStockManager *)sharedManager {
     static SDStockManager *_sharedManager = nil;
@@ -63,6 +64,49 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
     }];
     
     [requestOperation start];
+
+}
+
+-(void)stockPriceWithSymbol:(NSString*)stockSymbol{
+
+
+    self.stockSymbol = stockSymbol;
+    
+    NSURL *requestUrl = [NSURL URLWithString:[NSString stringWithFormat:yahooLoadStockDetailsURLString, [stockSymbol stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+    
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:requestUrl];
+    
+    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError *error = nil;
+        
+        NSString *trimmedResponse = [requestOperation.responseString stringByReplacingOccurrencesOfString:@"cbfunc" withString:@""];
+        
+        NSCharacterSet *removeSet = [NSCharacterSet characterSetWithCharactersInString:@"();"];
+        NSString *jsonResponse = [[trimmedResponse componentsSeparatedByCharactersInSet: removeSet] componentsJoinedByString: @""];
+        
+        NSDictionary *responseDict =  [NSJSONSerialization JSONObjectWithData:[jsonResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error];
+        
+        responseDict = [[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"];
+        
+        NSNumber *stockPrice = [responseDict valueForKey:@"Ask"];
+        
+        if (error) {
+            NSLog(@"Parsing Error %@",[error description]);
+        }else{
+            [self.delegate didRecieveStockPrice:stockPrice forSymbol:stockSymbol];
+        }
+        
+        
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"FAILURE: %@",[error description]);
+    }];
+    
+    [requestOperation start];
+    
 
 }
 

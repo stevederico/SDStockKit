@@ -10,20 +10,21 @@
 
 @protocol SDStockManagerDelegate <NSObject>
 
-@required
+@optional
 
 -(void)didRecieveStockInfo:(NSDictionary*)stockInfo;
+-(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol;
 
 @end
 
 @interface SDStockManager : NSObject{
-
     __weak id delegate;
-
 }
 
 @property(nonatomic,strong) NSString *stockSymbol;
 @property(nonatomic,weak) id <SDStockManagerDelegate> delegate;
+
 +(SDStockManager *)sharedManager;
 -(void)stockInfoWithSymbol:(NSString*)stockSymbol;
+-(void)stockPriceWithSymbol:(NSString*)stockSymbol;
 @end
