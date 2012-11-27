@@ -44,14 +44,19 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         NSString *jsonResponse = [[trimmedResponse componentsSeparatedByCharactersInSet: removeSet] componentsJoinedByString: @""];
         
         NSDictionary *responseDict =  [NSJSONSerialization JSONObjectWithData:[jsonResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error];
+        
+        responseDict = [[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"];
     
         if (error) {
             NSLog(@"Parsing Error %@",[error description]);
         }else{
-            NSLog(@"Response %@",[responseDict description]);
+            
+//            NSLog(@"Response %@",[responseDict description]);
+            [self.delegate didRecieveStockInfo:responseDict];
         }
-            //contact delegate
-        
+     
+
+     
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAILURE: %@",[error description]);

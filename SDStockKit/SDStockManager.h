@@ -8,10 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SDStockManager : NSObject
+@protocol SDStockManagerDelegate <NSObject>
+
+@required
+
+-(void)didRecieveStockInfo:(NSDictionary*)stockInfo;
+
+@end
+
+@interface SDStockManager : NSObject{
+
+    __weak id delegate;
+
+}
 
 @property(nonatomic,strong) NSString *stockSymbol;
-
+@property(nonatomic,weak) id <SDStockManagerDelegate> delegate;
 +(SDStockManager *)sharedManager;
 -(void)stockInfoWithSymbol:(NSString*)stockSymbol;
 @end
