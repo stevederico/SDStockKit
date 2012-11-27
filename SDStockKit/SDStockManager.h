@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface SDStockManager : NSObject
-+ (SDStockManager *)sharedManager;
 
+@property(nonatomic,strong) NSString *stockSymbol;
+
++(SDStockManager *)sharedManager;
+-(void)stockInfoWithSymbol:(NSString*)stockSymbol;
 @end

@@ -33,6 +33,9 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showAddStock)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    [[SDStockManager sharedManager] stockInfoWithSymbol:@"GOOG"];
+    
 }
 
 - (void)didReceiveMemoryWarning
