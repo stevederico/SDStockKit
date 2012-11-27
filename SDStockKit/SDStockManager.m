@@ -51,13 +51,8 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         if (error) {
             NSLog(@"Parsing Error %@",[error description]);
         }else{
-            
-//            NSLog(@"Response %@",[responseDict description]);
             [self.delegate didRecieveStockInfo:responseDict];
         }
-     
-
-     
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAILURE: %@",[error description]);
