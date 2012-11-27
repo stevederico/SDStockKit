@@ -1,9 +1,13 @@
 11/24/12
-
-
--Add Stock Screen
+Add Stock Screen
 -Stock Validations
 -Stocks TableView
 -Pull to Refrsh
--Add CoreData
--Add AFNetworking
+
+
+
+
+SDStockKit
+-Add Delegate to SDStockManager
+-Add Get Price to SDStockManager
+-Refactor getInfo Parse

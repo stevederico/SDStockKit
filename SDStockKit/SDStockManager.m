@@ -38,24 +38,25 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         
         NSError *error = nil;
         
-        NSString *JSON = [requestOperation.responseString stringByReplacingOccurrencesOfString:@"cbfunc" withString:@""];
+        NSString *trimmedResponse = [requestOperation.responseString stringByReplacingOccurrencesOfString:@"cbfunc" withString:@""];
         
-        NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@"();"];
-        JSON = [[JSON componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @""];
-
-        NSData *data =[JSON dataUsingEncoding:NSUTF8StringEncoding];
+        NSCharacterSet *removeSet = [NSCharacterSet characterSetWithCharactersInString:@"();"];
+        NSString *jsonResponse = [[trimmedResponse componentsSeparatedByCharactersInSet: removeSet] componentsJoinedByString: @""];
         
-        NSDictionary *responseDict =  [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error];
-
-        NSLog(@"DICT %@",[responseDict description]);
-        NSLog(@"ERROR %@",[error description]);
-        
-
+        NSDictionary *responseDict =  [NSJSONSerialization JSONObjectWithData:[jsonResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error];
+    
+        if (error) {
+            NSLog(@"Parsing Error %@",[error description]);
+        }else{
+            NSLog(@"Response %@",[responseDict description]);
+        }
+            //contact delegate
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAILURE: %@",[error description]);
     }];
+    
     [requestOperation start];
 
 }
