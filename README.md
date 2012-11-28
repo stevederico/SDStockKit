@@ -12,10 +12,6 @@ Build and run the `SDStockKit Example` project in Xcode to see an inventory of t
 ## SDStockManager
 
 Sends request and parses response for stock information from Yahoo Finance API. Requires a delegate that adheres to the SDStockManagerDelegate Protocol.
-
-* -(void)didRecieveStockInfo:(NSDictionary*)stockInfo
-* -(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol
-
 > Requires the `AFNetworking`.  
 > Only available on iOS.
 
@@ -26,6 +22,11 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL"];
 ```
 
+### Delegate Methods
+```objective-c
+* -(void)didRecieveStockInfo:(NSDictionary*)stockInfo
+* -(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol
+```
 ---
 
 ## Contact
