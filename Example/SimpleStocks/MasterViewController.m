@@ -43,6 +43,7 @@
     [[SDStockManager sharedManager] stockPriceWithSymbol:@"GOOG"];
     [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL"];
     [[SDStockManager sharedManager] stockPriceWithSymbol:@"IBM"];
+
     
 }
 
