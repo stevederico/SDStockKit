@@ -27,8 +27,17 @@ Sends request and parses response for stock information from Yahoo Finance API. 
   NSLog(@"STOCKINFO: %@",stockInfo);
 }
 
+-(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol{
+    NSLog(@"Stock: %@ Price: %@",symbol,stockPrice);
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:symbol,@"Symbol",stockPrice,@"Price", nil];
+    [_stocks addObject:dict];
+    [self.tableView reloadData];
+}
+```
 
-    AfterHoursChangeRealtime = "N/A - N/A";
+### Example `stockPriceWithSymbol` Response
+```
+AfterHoursChangeRealtime = "N/A - N/A";
     AnnualizedGain = "<null>";
     Ask = "584.79";
     AskRealtime = "584.79";
@@ -110,16 +119,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
     YearLow = "377.68";
     YearRange = "377.68 - 705.07";
     symbol = AAPL;
-}
 
-
-
--(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol{
-    NSLog(@"Stock: %@ Price: %@",symbol,stockPrice);
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:symbol,@"Symbol",stockPrice,@"Price", nil];
-    [_stocks addObject:dict];
-    [self.tableView reloadData];
-}
 ```
 ---
 
