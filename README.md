@@ -19,6 +19,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 * `cd SDStockKit`
 * `git submodule init`
 * `git submodule update`
+* `open .`
 * Drag `SDStockKit` folder into Xcode Project Side Bar
 * Open `External` Folder then Drag `AFNetworking` folder into Xcode Project Side Bar
 * Check `Copy items into destination group's folder (if needed)`
