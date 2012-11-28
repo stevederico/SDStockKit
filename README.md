@@ -21,9 +21,9 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 * `git submodule update`
 * `open .`
 * Drag `SDStockKit` folder into Xcode Project Side Bar
+* Check `Copy items into destination group's folder (if needed)` & `Add to Targets [YOURAPPNAME]`
 * Open `External` Folder then Drag `AFNetworking` folder into Xcode Project Side Bar
-* Check `Copy items into destination group's folder (if needed)`
-* Check `Add to Targets [YOURAPPNAME]`
+* Check `Copy items into destination group's folder (if needed)` & `Add to Targets [YOURAPPNAME]`
 * Click on `[YOURAPPNAME] Project Icon` in Sidebar -> `Build Phases` -> `Link Binary With Libraries`
 * Add `MobileCoreServices` & `SystemConfiguration` Framework
 * Add `#import "SDStockKit.h"`
