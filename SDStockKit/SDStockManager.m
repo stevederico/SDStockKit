@@ -52,7 +52,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         
     
         if (error) {
-            NSLog(@"Parsing Error %@",[error description]);
+            [self.delegate didFailWithError:error];
         }else{
             [self.delegate didRecieveStockInfo:responseDict];
         }
@@ -86,12 +86,15 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         NSDictionary *responseDict =  [NSJSONSerialization JSONObjectWithData:[jsonResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error];
         
         if (error) {
-            NSLog(@"Parsing Error %@",[error description]);
+           [self.delegate didFailWithError:error];
         }else{
             NSString *stockPriceString = [[[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"] valueForKey:@"LastTradePriceOnly"];
             
-            NSNumberFormatter  *numberFormatter = [[NSNumberFormatter alloc] init];
-            [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+            static NSNumberFormatter *numberFormatter = nil;
+            if (!numberFormatter) {
+                numberFormatter = [[NSNumberFormatter alloc] init];
+                [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+            }
             NSNumber *stockPrice = [NSNumber numberWithFloat:[stockPriceString floatValue]];
 
             NSLog(@"StockPrice: %@",stockPrice);

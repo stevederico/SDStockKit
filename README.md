@@ -28,6 +28,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 ```objective-c
 [[SDStockManager sharedManager] setDelegate:self];
 [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL"];
+[[SDStockManager sharedManager] stockInfoWithSymbol:@"GOOG"];
 ```
 
 ### Example Delegate Methods

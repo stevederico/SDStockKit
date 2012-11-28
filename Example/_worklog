@@ -14,9 +14,7 @@ Add Async Stock Price
 Round to Currency
 Added SDStockKit.h
 Added Error Handling
+Added Static Formatter
 
--Add Static Formatter
 -Replace License file
--Add Sync Price
--Add Sync Info
--Merge Stock Price and Stock Details
+
