@@ -44,7 +44,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 }
 ```
 
-### Example `stockInfoWithSymbol` Response (NSDictionary*)
+### Example `stockInfoWithSymbol` Response (`NSDictionary*`)
 ```objective-c
     AfterHoursChangeRealtime = "N/A - N/A";
     AnnualizedGain = "<null>";
@@ -131,7 +131,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 
 ```
 
-### Example `stockPriceWithSymbol` Response (NSNumber*)
+### Example `stockPriceWithSymbol` Response (`NSNumber*`)
 
 ```objective-c
 584.78
