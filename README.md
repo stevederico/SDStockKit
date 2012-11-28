@@ -14,6 +14,16 @@ Build and run the `SimpleStocks Example` project in Xcode to see an inventory of
 Sends request and parses response for stock information from Yahoo Finance API. Requires a delegate that adheres to the `SDStockManagerDelegate` Protocol.
 > Requires the `AFNetworking` only available on iOS.
 
+### Getting Started
+
+`
+$> git clone git@github.com:stevederico/SDStockKit.git
+$> cd SDStockKit
+$> git submodule init
+$> git submodule update
+`
+
+
 ### Example Usage
 ```objective-c
 [[SDStockManager sharedManager] setDelegate:self];
