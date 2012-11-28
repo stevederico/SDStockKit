@@ -45,9 +45,6 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 
 -(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol{
     NSLog(@"Stock: %@ Price: %@",symbol,stockPrice);
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:symbol,@"Symbol",stockPrice,@"Price", nil];
-    [_stocks addObject:dict];
-    [self.tableView reloadData];
 }
 ```
 
