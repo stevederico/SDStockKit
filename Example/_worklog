@@ -15,6 +15,7 @@ Round to Currency
 Added SDStockKit.h
 Added Error Handling
 Added Static Formatter
+Removed NSLogs
 
 -Replace License file
 

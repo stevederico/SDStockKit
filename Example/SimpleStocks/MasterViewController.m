@@ -137,4 +137,9 @@
     
 }
 
+- (void)didFailWithError:(NSError *)error{
+    NSLog(@"Error: %@",[error description]);
+
+}
+
 @end

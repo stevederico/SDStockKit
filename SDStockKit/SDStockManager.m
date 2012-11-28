@@ -96,8 +96,6 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
                 [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
             }
             NSNumber *stockPrice = [NSNumber numberWithFloat:[stockPriceString floatValue]];
-
-            NSLog(@"StockPrice: %@",stockPrice);
             
             [self.delegate didRecieveStockPrice:stockPrice forSymbol:stockSymbol];
         }
