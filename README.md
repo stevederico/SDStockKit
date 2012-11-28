@@ -1,6 +1,6 @@
 # SDStockKit
 
-`SDStockKit` is a simple framework for interacting with Yahoo's Finance API. 
+Getting a stock price shouldn't be hard. `SDStockKit` is a simple framework for interacting with Yahoo's Finance API. 
 
 
 ## Demo
@@ -16,10 +16,11 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 
 ### Getting Started
 
-1. `$> git clone git@github.com:stevederico/SDStockKit.git`
-* `$> cd SDStockKit`
-* `$> git submodule init`
-* `$> git submodule update`
+1. `git clone git@github.com:stevederico/SDStockKit.git`
+* `cd SDStockKit`
+* `git submodule init`
+* `git submodule update`
+* '
 
 
 
