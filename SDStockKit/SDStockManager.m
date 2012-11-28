@@ -107,14 +107,9 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         }else{
             NSString *stockPriceString = [[[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"] valueForKey:@"LastTradePriceOnly"];
             
-            static NSNumberFormatter *numberFormatter = nil;
-            if (!numberFormatter) {
-                numberFormatter = [[NSNumberFormatter alloc] init];
-                [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-            }
-            NSNumber *stockPrice = [NSNumber numberWithFloat:[stockPriceString floatValue]];
+            NSDecimalNumber *decimalNumber = [NSDecimalNumber decimalNumberWithString:stockPriceString];
             
-            [self.delegate didRecieveStockPrice:stockPrice forSymbol:stockSymbol];
+            [self.delegate didRecieveStockPrice:decimalNumber forSymbol:stockSymbol];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -101,7 +101,15 @@
     
     NSLog(@"Stock: %@ Price: %@",symbol,stockPrice);
     
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:symbol,@"Symbol",stockPrice,@"Price", nil];
+    static NSNumberFormatter *numberFormatter = nil;
+    if (!numberFormatter) {
+        numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    }
+    NSString *currencyString = [numberFormatter stringFromNumber:stockPrice];
+    NSLog(@"Currency String: %@", currencyString);
+    
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:symbol,@"Symbol",currencyString,@"Price", nil];
     
     [_stocks addObject:dict];
     
