@@ -2,7 +2,6 @@
 Add Stock Screen
 Stocks TableView
 Removed Main Buttons
--Pull to Refresh
 
 
 
@@ -16,6 +15,6 @@ Added SDStockKit.h
 Added Error Handling
 Added Static Formatter
 Removed NSLogs
+Added License
 
--Replace License file
 

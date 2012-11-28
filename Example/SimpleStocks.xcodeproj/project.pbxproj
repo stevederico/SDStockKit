@@ -10,21 +10,15 @@
 		55E1F1041661606200D7D044 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E1F1031661606200D7D044 /* UIKit.framework */; };
 		55E1F1061661606200D7D044 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E1F1051661606200D7D044 /* Foundation.framework */; };
 		55E1F1081661606200D7D044 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E1F1071661606200D7D044 /* CoreGraphics.framework */; };
-		55E1F10A1661606200D7D044 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E1F1091661606200D7D044 /* CoreData.framework */; };
 		55E1F1101661606200D7D044 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55E1F10E1661606200D7D044 /* InfoPlist.strings */; };
 		55E1F1121661606200D7D044 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1F1111661606200D7D044 /* main.m */; };
 		55E1F1161661606200D7D044 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1F1151661606200D7D044 /* AppDelegate.m */; };
 		55E1F1181661606200D7D044 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E1F1171661606200D7D044 /* Default.png */; };
 		55E1F11A1661606200D7D044 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E1F1191661606200D7D044 /* Default@2x.png */; };
 		55E1F11C1661606200D7D044 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E1F11B1661606200D7D044 /* Default-568h@2x.png */; };
-		55E1F11F1661606200D7D044 /* SimpleStocks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55E1F11D1661606200D7D044 /* SimpleStocks.xcdatamodeld */; };
 		55E1F1221661606200D7D044 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1F1211661606200D7D044 /* MasterViewController.m */; };
-		55E1F1251661606200D7D044 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1F1241661606200D7D044 /* DetailViewController.m */; };
 		55E1F1281661606200D7D044 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E1F1261661606200D7D044 /* MasterViewController.xib */; };
-		55E1F12B1661606200D7D044 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E1F1291661606200D7D044 /* DetailViewController.xib */; };
 		55E1F132166160A000D7D044 /* _worklog in Resources */ = {isa = PBXBuildFile; fileRef = 55E1F131166160A000D7D044 /* _worklog */; };
-		55E1F1361661614200D7D044 /* AddStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1F1341661614200D7D044 /* AddStockViewController.m */; };
-		55E1F1371661614200D7D044 /* AddStockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E1F1351661614200D7D044 /* AddStockViewController.xib */; };
 		55E1F15716616EB400D7D044 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E1F15616616EB400D7D044 /* MobileCoreServices.framework */; };
 		55E1F15916616EC200D7D044 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E1F15816616EC200D7D044 /* SystemConfiguration.framework */; };
 		55E1F1931663FD7D00D7D044 /* SDStockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1F1921663FD7D00D7D044 /* SDStockManager.m */; };
@@ -44,7 +38,6 @@
 		55E1F1031661606200D7D044 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		55E1F1051661606200D7D044 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55E1F1071661606200D7D044 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		55E1F1091661606200D7D044 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		55E1F10D1661606200D7D044 /* SimpleStocks-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleStocks-Info.plist"; sourceTree = "<group>"; };
 		55E1F10F1661606200D7D044 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55E1F1111661606200D7D044 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -54,17 +47,10 @@
 		55E1F1171661606200D7D044 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		55E1F1191661606200D7D044 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		55E1F11B1661606200D7D044 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		55E1F11E1661606200D7D044 /* SimpleStocks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleStocks.xcdatamodel; sourceTree = "<group>"; };
 		55E1F1201661606200D7D044 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		55E1F1211661606200D7D044 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		55E1F1231661606200D7D044 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		55E1F1241661606200D7D044 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		55E1F1271661606200D7D044 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
-		55E1F12A1661606200D7D044 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
 		55E1F131166160A000D7D044 /* _worklog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _worklog; sourceTree = "<group>"; };
-		55E1F1331661614200D7D044 /* AddStockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStockViewController.h; sourceTree = "<group>"; };
-		55E1F1341661614200D7D044 /* AddStockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStockViewController.m; sourceTree = "<group>"; };
-		55E1F1351661614200D7D044 /* AddStockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddStockViewController.xib; sourceTree = "<group>"; };
 		55E1F15616616EB400D7D044 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		55E1F15816616EC200D7D044 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		55E1F1911663FD7D00D7D044 /* SDStockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStockManager.h; path = ../../SDStockKit/SDStockManager.h; sourceTree = "<group>"; };
@@ -101,7 +87,6 @@
 				55E1F1041661606200D7D044 /* UIKit.framework in Frameworks */,
 				55E1F1061661606200D7D044 /* Foundation.framework in Frameworks */,
 				55E1F1081661606200D7D044 /* CoreGraphics.framework in Frameworks */,
-				55E1F10A1661606200D7D044 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +119,6 @@
 				55E1F1031661606200D7D044 /* UIKit.framework */,
 				55E1F1051661606200D7D044 /* Foundation.framework */,
 				55E1F1071661606200D7D044 /* CoreGraphics.framework */,
-				55E1F1091661606200D7D044 /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -144,12 +128,7 @@
 			children = (
 				55E1F1201661606200D7D044 /* MasterViewController.h */,
 				55E1F1211661606200D7D044 /* MasterViewController.m */,
-				55E1F1331661614200D7D044 /* AddStockViewController.h */,
-				55E1F1341661614200D7D044 /* AddStockViewController.m */,
-				55E1F1231661606200D7D044 /* DetailViewController.h */,
-				55E1F1241661606200D7D044 /* DetailViewController.m */,
 				55E1F1381661619300D7D044 /* View */,
-				55E1F11D1661606200D7D044 /* SimpleStocks.xcdatamodeld */,
 				55E1F10C1661606200D7D044 /* Supporting Files */,
 			);
 			path = SimpleStocks;
@@ -175,9 +154,7 @@
 		55E1F1381661619300D7D044 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				55E1F1351661614200D7D044 /* AddStockViewController.xib */,
 				55E1F1261661606200D7D044 /* MasterViewController.xib */,
-				55E1F1291661606200D7D044 /* DetailViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -276,9 +253,7 @@
 				55E1F11A1661606200D7D044 /* Default@2x.png in Resources */,
 				55E1F11C1661606200D7D044 /* Default-568h@2x.png in Resources */,
 				55E1F1281661606200D7D044 /* MasterViewController.xib in Resources */,
-				55E1F12B1661606200D7D044 /* DetailViewController.xib in Resources */,
 				55E1F132166160A000D7D044 /* _worklog in Resources */,
-				55E1F1371661614200D7D044 /* AddStockViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,10 +266,7 @@
 			files = (
 				55E1F1121661606200D7D044 /* main.m in Sources */,
 				55E1F1161661606200D7D044 /* AppDelegate.m in Sources */,
-				55E1F11F1661606200D7D044 /* SimpleStocks.xcdatamodeld in Sources */,
 				55E1F1221661606200D7D044 /* MasterViewController.m in Sources */,
-				55E1F1251661606200D7D044 /* DetailViewController.m in Sources */,
-				55E1F1361661614200D7D044 /* AddStockViewController.m in Sources */,
 				55E1F1931663FD7D00D7D044 /* SDStockManager.m in Sources */,
 				55E1F1A81663FE9A00D7D044 /* AFHTTPClient.m in Sources */,
 				55E1F1A91663FE9A00D7D044 /* AFHTTPRequestOperation.m in Sources */,
@@ -325,14 +297,6 @@
 				55E1F1271661606200D7D044 /* en */,
 			);
 			name = MasterViewController.xib;
-			sourceTree = "<group>";
-		};
-		55E1F1291661606200D7D044 /* DetailViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55E1F12A1661606200D7D044 /* en */,
-			);
-			name = DetailViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -432,19 +396,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		55E1F11D1661606200D7D044 /* SimpleStocks.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				55E1F11E1661606200D7D044 /* SimpleStocks.xcdatamodel */,
-			);
-			currentVersion = 55E1F11E1661606200D7D044 /* SimpleStocks.xcdatamodel */;
-			path = SimpleStocks.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 55E1F0F61661606200D7D044 /* Project object */;
 }
