@@ -1,3 +1,0 @@
-[submodule "SDStockKit/External"]
-	path = SDStockKit/External
-	url = git@github.com:AFNetworking/AFNetworking.git
