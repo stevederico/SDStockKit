@@ -12,7 +12,6 @@ Build and run the `SimpleStocks Example` project in Xcode to see an inventory of
 ## SDStockManager
 
 Sends request and parses response for stock information from Yahoo Finance API. Requires a delegate that adheres to the `SDStockManagerDelegate` Protocol.
-> Requires the `AFNetworking` only available on iOS.
 
 ### Getting Started
 
@@ -137,6 +136,9 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 584.78
 ```
 ---
+
+### Dependencies
+* AFNetworking - A delightful iOS and OS X networking framework
 
 ## Contact
 
