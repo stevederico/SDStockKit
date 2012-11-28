@@ -19,9 +19,15 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 * `cd SDStockKit`
 * `git submodule init`
 * `git submodule update`
-* Add to Project
+* `open .`
+* Drag `SDStockKit` folder into Xcode Project Side Bar
+* Check `Copy items into destination group's folder (if needed)`
+* Check `Add to Targets [YOURAPPNAME]`
 * Add `#import "SDStockKit.h"`
-
+* Call `SDStockManager sharedManager`
+* setDelegate to `SDStockManagerDelegate`
+* Respond to delegate methods
+* Make call on sharedManager
 
 
 ### Example Usage
