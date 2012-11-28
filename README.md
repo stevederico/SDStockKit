@@ -19,7 +19,8 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 * `cd SDStockKit`
 * `git submodule init`
 * `git submodule update`
-* '
+* Add to Project
+* Add `#import "SDStockKit.h"`
 
 
 
