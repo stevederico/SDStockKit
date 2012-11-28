@@ -44,7 +44,14 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 }
 
 -(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol{
-    NSLog(@"Stock: %@ Price: %@",symbol,stockPrice);
+  
+    static NSNumberFormatter *numberFormatter = nil;
+    if (!numberFormatter) {
+        numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    }
+    NSString *currencyString = [numberFormatter stringFromNumber:stockPrice];
+    NSLog(@"Stock %@ Price: %@", symbol,currencyString);
 }
 ```
 
