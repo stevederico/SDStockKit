@@ -16,7 +16,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 
 ### Getting Started
 
-* `$> git clone git@github.com:stevederico/SDStockKit.git`
+1. `$> git clone git@github.com:stevederico/SDStockKit.git`
 * `$> cd SDStockKit`
 * `$> git submodule init`
 * `$> git submodule update`
