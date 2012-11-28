@@ -88,6 +88,7 @@
 		55E1F1A51663FE9A00D7D044 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		55E1F1A61663FE9A00D7D044 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		55E1F1A71663FE9A00D7D044 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		7B62510B1665D72700089947 /* SDStockKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStockKit.h; path = ../../SDStockKit/SDStockKit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +185,7 @@
 		55E1F18D1663FA4400D7D044 /* SDStockKit */ = {
 			isa = PBXGroup;
 			children = (
+				7B62510B1665D72700089947 /* SDStockKit.h */,
 				55E1F1941663FE9A00D7D044 /* AFNetworking */,
 				55E1F1911663FD7D00D7D044 /* SDStockManager.h */,
 				55E1F1921663FD7D00D7D044 /* SDStockManager.m */,

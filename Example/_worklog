@@ -12,7 +12,11 @@ Added Async Stock Info
 Add Delegate to SDStockManager
 Add Async Stock Price
 Round to Currency
+Added SDStockKit.h
 
+
+-Add Static Formatter
+-Replace License file
 -Add Error Handling
 -Add Sync Price
 -Add Sync Info

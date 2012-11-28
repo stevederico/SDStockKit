@@ -87,7 +87,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         }else{
             NSString *stockPriceString = [[[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"] valueForKey:@"LastTradePriceOnly"];
             
-            NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+            NSNumberFormatter  *numberFormatter = [[NSNumberFormatter alloc] init];
             [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
             NSNumber *stockPrice = [NSNumber numberWithFloat:[stockPriceString floatValue]];
 
