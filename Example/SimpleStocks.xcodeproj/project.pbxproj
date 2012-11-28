@@ -162,8 +162,8 @@
 		55E1F18D1663FA4400D7D044 /* SDStockKit */ = {
 			isa = PBXGroup;
 			children = (
-				7B62510B1665D72700089947 /* SDStockKit.h */,
 				55E1F1941663FE9A00D7D044 /* AFNetworking */,
+				7B62510B1665D72700089947 /* SDStockKit.h */,
 				55E1F1911663FD7D00D7D044 /* SDStockManager.h */,
 				55E1F1921663FD7D00D7D044 /* SDStockManager.m */,
 			);
