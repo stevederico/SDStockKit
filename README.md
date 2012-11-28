@@ -22,7 +22,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 * Drag `SDStockKit` folder into Xcode Project Side Bar
 * Check `Copy items into destination group's folder (if needed)`
 * Check `Add to Targets [YOURAPPNAME]`
-* Click on Blue Project Icon in Sidebar ->Build Phases -> Link Binary With Libraries
+* Click on `[YOURAPPNAME] Project Icon` in Sidebar -> `Build Phases` -> `Link Binary With Libraries`
 * Add `MobileCoreServices` & `SystemConfiguration` Framework
 * Add `#import "SDStockKit.h"`
 
