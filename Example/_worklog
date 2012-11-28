@@ -1,7 +1,7 @@
 11/24/12
 Add Stock Screen
 Stocks TableView
--Stock Validations
+Removed Main Buttons
 -Pull to Refresh
 
 
@@ -13,11 +13,10 @@ Add Delegate to SDStockManager
 Add Async Stock Price
 Round to Currency
 Added SDStockKit.h
-
+Added Error Handling
 
 -Add Static Formatter
 -Replace License file
--Add Error Handling
 -Add Sync Price
 -Add Sync Info
 -Merge Stock Price and Stock Details

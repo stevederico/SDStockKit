@@ -34,6 +34,8 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:requestUrl];
     
+    __block NSDictionary *responseDict;
+    
     AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -44,9 +46,10 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         NSCharacterSet *removeSet = [NSCharacterSet characterSetWithCharactersInString:@"();"];
         NSString *jsonResponse = [[trimmedResponse componentsSeparatedByCharactersInSet: removeSet] componentsJoinedByString: @""];
         
-        NSDictionary *responseDict =  [NSJSONSerialization JSONObjectWithData:[jsonResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error];
+        responseDict = [NSJSONSerialization JSONObjectWithData:[jsonResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error];
         
         responseDict = [[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"];
+        
     
         if (error) {
             NSLog(@"Parsing Error %@",[error description]);
@@ -55,7 +58,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"FAILURE: %@",[error description]);
+            [self.delegate didFailWithError:error];
     }];
     
     [requestOperation start];
@@ -97,7 +100,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"FAILURE: %@",[error description]);
+        [self.delegate didFailWithError:error];
     }];
     
     [requestOperation start];

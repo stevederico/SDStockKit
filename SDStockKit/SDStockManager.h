@@ -15,6 +15,8 @@
 -(void)didRecieveStockInfo:(NSDictionary*)stockInfo;
 -(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol;
 
+-(void)didFailWithError:(NSError*)error;
+
 @end
 
 @interface SDStockManager : NSObject{
