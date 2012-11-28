@@ -11,7 +11,8 @@ SDStockKit
 Added Async Stock Info
 Add Delegate to SDStockManager
 Add Async Stock Price
--Round to Currency
+Round to Currency
+
 -Add Error Handling
 -Add Sync Price
 -Add Sync Info
