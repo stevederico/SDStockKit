@@ -138,12 +138,10 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 ---
 
 ### Dependencies
-* AFNetworking(http://www.afnetworking.com) - A delightful iOS and OS X networking framework
+* [AFNetworking](http://www.afnetworking.com) - A delightful iOS and OS X networking framework
 
 ## Contact
-
 Steve Derico
-
 - http://github.com/stevederico
 - http://twitter.com/stevederico
 - http://blog.stevederico.com
