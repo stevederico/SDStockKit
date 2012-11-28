@@ -5,7 +5,7 @@
 
 ## Demo
 
-Build and run the `SDStockKit Example` project in Xcode to see an inventory of the available `SDStockKit` components.
+Build and run the `SimpleStocks Example` project in Xcode to see an inventory of the available `SDStockKit` components.
 
 ---
 
