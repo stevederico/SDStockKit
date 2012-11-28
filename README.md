@@ -35,7 +35,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 }
 ```
 
-### Example `stockPriceWithSymbol` Response
+### Example `stockInfoWithSymbol` Response
 ```
     AfterHoursChangeRealtime = "N/A - N/A";
     AnnualizedGain = "<null>";
@@ -124,7 +124,8 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 
 ### Example `stockPriceWithSymbol` Response
 
-```584.78
+```
+584.78
 ```
 ---
 
