@@ -15,7 +15,6 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 > Requires the `AFNetworking` only available on iOS.
 
 ### Example Usage
-
 ```objective-c
 [[SDStockManager sharedManager] setDelegate:self];
 [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL"];
@@ -36,7 +35,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 ```
 
 ### Example `stockInfoWithSymbol` Response (NSDictionary*)
-```
+```objective-c
     AfterHoursChangeRealtime = "N/A - N/A";
     AnnualizedGain = "<null>";
     Ask = "584.79";
@@ -124,7 +123,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 
 ### Example `stockPriceWithSymbol` Response (NSNumber*)
 
-```
+```objective-c
 584.78
 ```
 ---
