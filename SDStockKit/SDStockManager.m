@@ -67,6 +67,12 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         
         responseDict = [[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"];
         
+        if ([[responseDict valueForKey:@"query"] valueForKey:@"results"] == [NSNull null]) {
+            error = [NSError errorWithDomain:@"Yahoo" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"Yahoo API is Down" forKey:@"Description"]];
+            [self.delegate didFailWithError:error];
+            return;
+        }
+        
     
         if (error) {
             [self.delegate didFailWithError:error];
@@ -105,6 +111,12 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         if (error) {
            [self.delegate didFailWithError:error];
         }else{
+            if ([[responseDict valueForKey:@"query"] valueForKey:@"results"] == [NSNull null]) {
+                error = [NSError errorWithDomain:@"Yahoo" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"Yahoo API is Down" forKey:@"Description"]];
+                [self.delegate didFailWithError:error];
+                return;
+            }
+            
             NSString *stockPriceString = [[[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"] valueForKey:@"LastTradePriceOnly"];
             
             NSDecimalNumber *decimalNumber = [NSDecimalNumber decimalNumberWithString:stockPriceString];
