@@ -66,12 +66,14 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         
         responseDict = [[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"];
         
+        //Check if Yahoo's Response is NULL
         if ([[responseDict valueForKey:@"query"] valueForKey:@"results"] == [NSNull null]) {
             error = [NSError errorWithDomain:@"Yahoo" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"Yahoo API is Not Available" forKey:@"Description"]];
             [self.delegate didFailWithError:error];
             return;
         }
         
+        //Check for parsing error
         if (error) {
             [self.delegate didFailWithError:error];
         }else{
