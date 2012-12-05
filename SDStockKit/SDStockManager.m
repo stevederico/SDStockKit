@@ -75,7 +75,6 @@ static NSString *kSHStockProviderAPIURLFormat = @"http://download.finance.yahoo.
             return;
         }
         
-    
         if (error) {
             [self.delegate didFailWithError:error];
         }else{
@@ -87,8 +86,6 @@ static NSString *kSHStockProviderAPIURLFormat = @"http://download.finance.yahoo.
                     completion(responseDict);
                 });
             }
-            
-            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -96,59 +93,26 @@ static NSString *kSHStockProviderAPIURLFormat = @"http://download.finance.yahoo.
     }];
     
     [requestOperation start];
-
 }
 
--(void)stockPriceWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion {
+- (void)stockPriceWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion {
 
-    self.stockSymbol = stockSymbol;
-    
-    NSURL *requestUrl = [NSURL URLWithString:[NSString stringWithFormat:yahooLoadStockDetailsURLString, [stockSymbol stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
-    
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:requestUrl];
-    
-    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self stockInfoWithSymbol:stockSymbol completion:^(NSDictionary *information) {
         
-        NSError *error = nil;
+        NSString *stockPriceString = [information valueForKey:@"LastTradePriceOnly"];
         
-        NSString *trimmedResponse = [requestOperation.responseString stringByReplacingOccurrencesOfString:@"cbfunc" withString:@""];
+        NSDecimalNumber *decimalNumber = [NSDecimalNumber decimalNumberWithString:stockPriceString];
+        [self.delegate didRecieveStockPrice:decimalNumber forSymbol:stockSymbol];
         
-        NSCharacterSet *removeSet = [NSCharacterSet characterSetWithCharactersInString:@"();"];
-        NSString *jsonResponse = [[trimmedResponse componentsSeparatedByCharactersInSet: removeSet] componentsJoinedByString: @""];
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:decimalNumber, @"Price", stockSymbol, @"Stock", nil];
         
-        NSDictionary *responseDict =  [NSJSONSerialization JSONObjectWithData:[jsonResponse dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error];
-        
-        if (error) {
-           [self.delegate didFailWithError:error];
-        }else{
-            if ([[responseDict valueForKey:@"query"] valueForKey:@"results"] == [NSNull null]) {
-                error = [NSError errorWithDomain:@"Yahoo" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"Yahoo API is Down" forKey:@"Description"]];
-                [self.delegate didFailWithError:error];
-                return;
-            }
-            
-            NSString *stockPriceString = [[[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"] valueForKey:@"LastTradePriceOnly"];
-            
-            NSDecimalNumber *decimalNumber = [NSDecimalNumber decimalNumberWithString:stockPriceString];
-            [self.delegate didRecieveStockPrice:decimalNumber forSymbol:stockSymbol];
-            
-            NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:decimalNumber, @"Price", stockSymbol, @"Stock", nil];
-            
             //Block Based Return Thanks @soffes!
-            if (completion != nil) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(dict);
-                });
-            }
+        if (completion != nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(dict);
+            });
         }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate didFailWithError:error];
     }];
-    
-    [requestOperation start];
-    
 }
 
 

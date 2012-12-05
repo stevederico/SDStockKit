@@ -50,13 +50,13 @@
     
     //SDStockManagerDelegate Callback
     [[SDStockManager sharedManager] setDelegate:self];
-    [[SDStockManager sharedManager] stockPriceWithSymbol:@"GOOG" completion:nil];
-    [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL" completion:nil];
-    
-    //Block-Based Callback
-    [[SDStockManager sharedManager] stockInfoWithSymbol:@"AAPL" completion:^(NSDictionary *information) {
-        NSLog(@"DICT %@",information);
-    }];
+//    [[SDStockManager sharedManager] stockPriceWithSymbol:@"GOOG" completion:nil];
+//    [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL" completion:nil];
+//    
+//    //Block-Based Callback
+//    [[SDStockManager sharedManager] stockInfoWithSymbol:@"AAPL" completion:^(NSDictionary *information) {
+//        NSLog(@"DICT %@",information);
+//    }];
     [[SDStockManager sharedManager] stockPriceWithSymbol:@"IBM" completion:^(NSDictionary *information) {
         NSLog(@"DICT %@",information);
     }];
