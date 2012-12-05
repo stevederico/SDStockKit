@@ -26,6 +26,7 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 * Check `Copy items into destination group's folder (if needed)` & `Add to Targets [YOURAPPNAME]`
 * Click on `[YOURAPPNAME] Project Icon` in Sidebar -> `Build Phases` -> `Link Binary With Libraries`
 * Add `MobileCoreServices` & `SystemConfiguration` Framework
+* Open [YOURAPPNAME]-Prefix.pch and add `#import <SystemConfiguration/SystemConfiguration.h>` and `#import <MobileCoreServices/MobileCoreServices.h>`
 * Add `#import "SDStockKit.h"`
 
 
