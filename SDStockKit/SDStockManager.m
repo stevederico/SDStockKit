@@ -67,7 +67,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         responseDict = [[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"];
         
         if ([[responseDict valueForKey:@"query"] valueForKey:@"results"] == [NSNull null]) {
-            error = [NSError errorWithDomain:@"Yahoo" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"Yahoo API is Down" forKey:@"Description"]];
+            error = [NSError errorWithDomain:@"Yahoo" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"Yahoo API is Not Available" forKey:@"Description"]];
             [self.delegate didFailWithError:error];
             return;
         }
@@ -77,7 +77,6 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         }else{
             [self.delegate didRecieveStockInfo:responseDict];
             
-                //Block Based Return Thanks @soffes!
             if (completion != nil) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(responseDict);
@@ -94,17 +93,12 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
 
 - (void)stockPriceWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion {
 
-    
-   void(^myBlock2)() = ^(NSDictionary *information) {
-        
+   void(^compBlock)() = ^(NSDictionary *information) {
         NSString *stockPriceString = [information valueForKey:@"LastTradePriceOnly"];
-        
         NSDecimalNumber *decimalNumber = [NSDecimalNumber decimalNumberWithString:stockPriceString];
         [self.delegate didRecieveStockPrice:decimalNumber forSymbol:stockSymbol];
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:decimalNumber, @"Price", stockSymbol, @"Symbol", nil];
         
-        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:decimalNumber, @"Price", stockSymbol, @"Stock", nil];
-        
-            //Block Based Return Thanks @soffes!
         if (completion != nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(dict);
@@ -112,7 +106,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
         }
    };
     
-    [self stockInfoWithSymbol:stockSymbol completion:[myBlock2 copy]];
+    [self stockInfoWithSymbol:stockSymbol completion:[compBlock copy]];
 }
 
 
@@ -122,7 +116,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
     __block int counter = 0;
     [stocks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [self stockPriceWithSymbol:obj completion:^(NSDictionary *information) {
-                [response setValue: [information valueForKey:@"Price"] forKey:obj];
+                [response setValue: [information valueForKey:@"Price"] forKey:[information valueForKey:@"Symbol"]];
                  counter++;
                 if (counter == [stocks count]) {
                     if (completion != nil) {
@@ -140,7 +134,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
     __block NSMutableDictionary *response = [[NSMutableDictionary alloc] init];
     __block int counter = 0;
     [stocks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [self stockPriceWithSymbol:obj completion:^(NSDictionary *information) {
+        [self stockInfoWithSymbol:obj completion:^(NSDictionary *information) {
             [response setValue:information forKey:obj];
             counter++;
             if (counter == [stocks count]) {

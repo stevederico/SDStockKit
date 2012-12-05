@@ -21,7 +21,7 @@ Added License
 Added Block Support
 Added Array Support
 Add Blocks Documnetation
-
+Fixed AFNetworking Warning bug https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-FAQ, https://github.com/AFNetworking/AFNetworking/issues/577
 
 -Change External to Vendor Change
 -Add AppleDoc

@@ -53,24 +53,26 @@
     [[SDStockManager sharedManager] stockPriceWithSymbol:@"GOOG" completion:nil];
     [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL" completion:nil];
     
-    //Block-Based Callback
-    [[SDStockManager sharedManager] stockInfoWithSymbol:@"AAPL" completion:^(NSDictionary *information) {
-        NSLog(@"StockInfo-Block: %@",information);
-    }];
-    [[SDStockManager sharedManager] stockPriceWithSymbol:@"IBM" completion:^(NSDictionary *information) {
-        NSLog(@"StockPrice-Block: %@",information);
-    }];
-    
-    NSArray *stocks = [NSArray arrayWithObjects:@"GOOG",@"AAPL",@"IBM", nil];
+      //Block-Based Callback
+//    [[SDStockManager sharedManager] setDelegate:nil];
+//    [[SDStockManager sharedManager] stockInfoWithSymbol:@"AAPL" completion:^(NSDictionary *information) {
+//        NSLog(@"StockInfo-Block: %@",information);            
+//    }];
+//    [[SDStockManager sharedManager] stockPriceWithSymbol:@"IBM" completion:^(NSDictionary *information) {
+//        NSLog(@"StockPrice-Block: %@",information);
+//    }];
 
-    //Array Support
-    [[SDStockManager sharedManager] stockPriceWithSymbols:stocks completion:^(NSDictionary *information) {
-        NSLog(@"StockPrice-Array: %@",information);
-    }];
-    [[SDStockManager sharedManager] stockInfoWithSymbols:stocks completion:^(NSDictionary *information) {
-        NSLog(@"StockInfo-Array: %@",information);
-    }];
-//
+    
+      //Array Support
+//    [[SDStockManager sharedManager] setDelegate:nil];
+//    NSArray *stocks = [NSArray arrayWithObjects:@"GOOG",@"AAPL",@"IBM", nil];
+//    [[SDStockManager sharedManager] stockPriceWithSymbols:stocks completion:^(NSDictionary *information) {
+//        NSLog(@"StockPrice-Array: %@",information);
+//    }];
+//    [[SDStockManager sharedManager] stockInfoWithSymbols:stocks completion:^(NSDictionary *information) {
+//        NSLog(@"StockInfo-Array: %@",information);
+//    }];
+
 }
 
 #pragma mark - Table View
@@ -113,7 +115,7 @@
 
 -(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol{
     
-    NSLog(@"Delegate-Stock: %@ Price: %@",symbol,stockPrice);
+    NSLog(@"StockPrice-Delegate: %@ Price: %@",symbol,stockPrice);
     
     static NSNumberFormatter *numberFormatter = nil;
     if (!numberFormatter) {
@@ -127,7 +129,7 @@
     [_stocks addObject:dict];
     
     [self.tableView reloadData];
-    
+        
 }
 
 - (void)didFailWithError:(NSError *)error{
