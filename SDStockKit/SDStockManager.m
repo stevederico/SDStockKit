@@ -27,9 +27,6 @@
 
 static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v1/public/yql?q=select%%20*%%20from%%20yahoo.finance.quotes%%20where%%20symbol%%20%%3D%%20%%22%@%%22&format=json&env=store%%3A%%2F%%2Fdatatables.org%%2Falltableswithkeys&callback=cbfunc";
 
-static NSString *kSHStockProviderAPIURLFormat = @"http://download.finance.yahoo.com/d/quotes.csv?s=%@&f=snl1p2c6";
-
-
 @implementation SDStockManager
 
 @synthesize stockSymbol = _stockSymbol;
@@ -97,7 +94,8 @@ static NSString *kSHStockProviderAPIURLFormat = @"http://download.finance.yahoo.
 
 - (void)stockPriceWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion {
 
-    [self stockInfoWithSymbol:stockSymbol completion:^(NSDictionary *information) {
+    
+   void(^myBlock2)() = ^(NSDictionary *information) {
         
         NSString *stockPriceString = [information valueForKey:@"LastTradePriceOnly"];
         
@@ -112,6 +110,47 @@ static NSString *kSHStockProviderAPIURLFormat = @"http://download.finance.yahoo.
                 completion(dict);
             });
         }
+   };
+    
+    [self stockInfoWithSymbol:stockSymbol completion:[myBlock2 copy]];
+}
+
+
+-(void)stockPriceWithSymbols:(NSArray*)stocks completion:(void (^)(NSDictionary *information))completion{
+
+    __block NSMutableDictionary *response = [[NSMutableDictionary alloc] init];
+    __block int counter = 0;
+    [stocks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [self stockPriceWithSymbol:obj completion:^(NSDictionary *information) {
+                [response setValue: [information valueForKey:@"Price"] forKey:obj];
+                 counter++;
+                if (counter == [stocks count]) {
+                    if (completion != nil) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            completion(response);
+                        });
+                    }
+                }
+            }];   
+    }];
+}
+
+-(void)stockInfoWithSymbols:(NSArray*)stocks completion:(void (^)(NSDictionary *information))completion{
+    
+    __block NSMutableDictionary *response = [[NSMutableDictionary alloc] init];
+    __block int counter = 0;
+    [stocks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [self stockPriceWithSymbol:obj completion:^(NSDictionary *information) {
+            [response setValue:information forKey:obj];
+            counter++;
+            if (counter == [stocks count]) {
+                if (completion != nil) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(response);
+                    });
+                }
+            }
+        }];
     }];
 }
 

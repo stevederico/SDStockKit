@@ -45,4 +45,8 @@
 +(SDStockManager *)sharedManager;
 -(void)stockInfoWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion;
 -(void)stockPriceWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion;
+-(void)stockInfoWithSymbols:(NSArray*)stocks completion:(void (^)(NSDictionary *information))completion;
+-(void)stockPriceWithSymbols:(NSArray*)stocks completion:(void (^)(NSDictionary *information))completion;
+
+
 @end

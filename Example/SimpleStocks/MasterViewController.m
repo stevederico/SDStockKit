@@ -50,18 +50,27 @@
     
     //SDStockManagerDelegate Callback
     [[SDStockManager sharedManager] setDelegate:self];
-//    [[SDStockManager sharedManager] stockPriceWithSymbol:@"GOOG" completion:nil];
-//    [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL" completion:nil];
-//    
+    [[SDStockManager sharedManager] stockPriceWithSymbol:@"GOOG" completion:nil];
+    [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL" completion:nil];
+    
 //    //Block-Based Callback
 //    [[SDStockManager sharedManager] stockInfoWithSymbol:@"AAPL" completion:^(NSDictionary *information) {
-//        NSLog(@"DICT %@",information);
+//        NSLog(@"StockInfo-Block: %@",information);
 //    }];
-    [[SDStockManager sharedManager] stockPriceWithSymbol:@"IBM" completion:^(NSDictionary *information) {
-        NSLog(@"DICT %@",information);
-    }];
-
+//    [[SDStockManager sharedManager] stockPriceWithSymbol:@"IBM" completion:^(NSDictionary *information) {
+//        NSLog(@"StockPrice-Block: %@",information);
+//    }];
     
+//    NSArray *stocks = [NSArray arrayWithObjects:@"GOOG",@"AAPL",@"IBM", nil];
+//
+//    //Array Support
+//    [[SDStockManager sharedManager] stockPriceWithSymbols:stocks completion:^(NSDictionary *information) {
+//        NSLog(@"StockPrice-Array: %@",information);
+//    }];
+//    [[SDStockManager sharedManager] stockInfoWithSymbols:stocks completion:^(NSDictionary *information) {
+//        NSLog(@"StockInfo-Array: %@",information);
+//    }];
+//    
 }
 
 #pragma mark - Table View
@@ -90,7 +99,6 @@
 
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-
     cell.textLabel.text = [[[_stocks objectAtIndex:indexPath.row]  valueForKey:@"Symbol"] description];
     cell.detailTextLabel.text = [[[_stocks objectAtIndex:indexPath.row] valueForKey:@"Price"] description];
 }
@@ -100,13 +108,13 @@
 
 -(void)didRecieveStockInfo:(NSDictionary*)stockInfo{
 
-    NSLog(@"STOCKINFO: %@",stockInfo);
+    NSLog(@"StockInfo-Delegate: %@",stockInfo);
 
 }
 
 -(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol{
     
-    NSLog(@"Stock: %@ Price: %@",symbol,stockPrice);
+    NSLog(@"Delegate-Stock: %@ Price: %@",symbol,stockPrice);
     
     static NSNumberFormatter *numberFormatter = nil;
     if (!numberFormatter) {
@@ -114,7 +122,6 @@
         [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     }
     NSString *currencyString = [numberFormatter stringFromNumber:stockPrice];
-    NSLog(@"Currency String: %@", currencyString);
     
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:symbol,@"Symbol",currencyString,@"Price", nil];
     

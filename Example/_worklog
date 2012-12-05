@@ -4,9 +4,7 @@ Stocks TableView
 Removed Main Buttons
 
 
-
-
-SDStockKit
+11/25/12
 Added Async Stock Info
 Add Delegate to SDStockManager
 Add Async Stock Price
@@ -20,3 +18,9 @@ Added License
 -Add Comments
 -Add Video to README
 
+
+12/4/12
+Added Block Support
+Added Array Support
+-Add Blocks Documnetation
+-Exetnerl Vendor Change
