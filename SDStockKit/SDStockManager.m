@@ -27,6 +27,8 @@
 
 static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v1/public/yql?q=select%%20*%%20from%%20yahoo.finance.quotes%%20where%%20symbol%%20%%3D%%20%%22%@%%22&format=json&env=store%%3A%%2F%%2Fdatatables.org%%2Falltableswithkeys&callback=cbfunc";
 
+static NSString *kSHStockProviderAPIURLFormat = @"http://download.finance.yahoo.com/d/quotes.csv?s=%@&f=snl1p2c6";
+
 
 @implementation SDStockManager
 
@@ -43,7 +45,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
     return _sharedManager;
 }
 
--(void)stockInfoWithSymbol:(NSString*)stockSymbol{
+-(void)stockInfoWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion {
 
     self.stockSymbol = stockSymbol;
     
@@ -78,6 +80,15 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
             [self.delegate didFailWithError:error];
         }else{
             [self.delegate didRecieveStockInfo:responseDict];
+            
+                //Block Based Return Thanks @soffes!
+            if (completion != nil) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(responseDict);
+                });
+            }
+            
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -88,7 +99,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
 
 }
 
--(void)stockPriceWithSymbol:(NSString*)stockSymbol{
+-(void)stockPriceWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion {
 
     self.stockSymbol = stockSymbol;
     
@@ -120,8 +131,16 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
             NSString *stockPriceString = [[[[responseDict valueForKey:@"query"] valueForKey:@"results"] valueForKey:@"quote"] valueForKey:@"LastTradePriceOnly"];
             
             NSDecimalNumber *decimalNumber = [NSDecimalNumber decimalNumberWithString:stockPriceString];
-            
             [self.delegate didRecieveStockPrice:decimalNumber forSymbol:stockSymbol];
+            
+            NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:decimalNumber, @"Price", stockSymbol, @"Stock", nil];
+            
+            //Block Based Return Thanks @soffes!
+            if (completion != nil) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(dict);
+                });
+            }
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -130,7 +149,7 @@ static NSString *yahooLoadStockDetailsURLString = @"http://query.yahooapis.com/v
     
     [requestOperation start];
     
-
 }
+
 
 @end

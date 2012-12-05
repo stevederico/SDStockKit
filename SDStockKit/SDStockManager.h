@@ -43,6 +43,6 @@
 @property(nonatomic,weak) id <SDStockManagerDelegate> delegate;
 
 +(SDStockManager *)sharedManager;
--(void)stockInfoWithSymbol:(NSString*)stockSymbol;
--(void)stockPriceWithSymbol:(NSString*)stockSymbol;
+-(void)stockInfoWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion;
+-(void)stockPriceWithSymbol:(NSString*)stockSymbol completion:(void (^)(NSDictionary *information))completion;
 @end
