@@ -30,17 +30,39 @@ Sends request and parses response for stock information from Yahoo Finance API. 
 
 
 
-### Example Usage
+### Example Delegate-Based Usage
 ```objective-c
 [[SDStockManager sharedManager] setDelegate:self];
 [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL"];
 [[SDStockManager sharedManager] stockInfoWithSymbol:@"GOOG"];
 ```
+### Example Block-Based Usage
+```objective-c
+[[SDStockManager sharedManager] stockInfoWithSymbol:@"AAPL" completion:^(NSDictionary *information) {
+    NSLog(@"StockInfo-Block: %@",information);
+}];
+[[SDStockManager sharedManager] stockPriceWithSymbol:@"IBM" completion:^(NSDictionary *information) {
+    NSLog(@"StockPrice-Block: %@",information);
+}];
+```
+
+```objective-c
+NSArray *stocks = [NSArray arrayWithObjects:@"GOOG",@"AAPL",@"IBM", nil];
+
+[[SDStockManager sharedManager] stockPriceWithSymbols:stocks completion:^(NSDictionary *information) {
+    NSLog(@"StockPrice-Array: %@",information);
+}];
+[[SDStockManager sharedManager] stockInfoWithSymbols:stocks completion:^(NSDictionary *information) {
+    NSLog(@"StockInfo-Array: %@",information);
+}];
+
+```
+
 
 ### Example Delegate Methods
 ```objective-c
 -(void)didRecieveStockInfo:(NSDictionary*)stockInfo{
-  NSLog(@"STOCKINFO: %@",stockInfo);
+  NSLog(@"StockInfo-Delegate: %@",stockInfo);
 }
 
 -(void)didRecieveStockPrice:(NSNumber *)stockPrice forSymbol:(NSString*)symbol{
