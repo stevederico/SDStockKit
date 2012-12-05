@@ -14,13 +14,17 @@ Added Error Handling
 Added Static Formatter
 Removed NSLogs
 Added License
--Add AppleDoc
--Add Comments
--Add Video to README
+
 
 
 12/4/12
 Added Block Support
 Added Array Support
--Add Blocks Documnetation
--Exetnerl Vendor Change
+Add Blocks Documnetation
+
+
+-Change External to Vendor Change
+-Add AppleDoc
+-Add Comments
+-Add Video to README
+-New endpoint? Null Response Bug

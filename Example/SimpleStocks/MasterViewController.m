@@ -53,24 +53,24 @@
     [[SDStockManager sharedManager] stockPriceWithSymbol:@"GOOG" completion:nil];
     [[SDStockManager sharedManager] stockPriceWithSymbol:@"AAPL" completion:nil];
     
-//    //Block-Based Callback
-//    [[SDStockManager sharedManager] stockInfoWithSymbol:@"AAPL" completion:^(NSDictionary *information) {
-//        NSLog(@"StockInfo-Block: %@",information);
-//    }];
-//    [[SDStockManager sharedManager] stockPriceWithSymbol:@"IBM" completion:^(NSDictionary *information) {
-//        NSLog(@"StockPrice-Block: %@",information);
-//    }];
+    //Block-Based Callback
+    [[SDStockManager sharedManager] stockInfoWithSymbol:@"AAPL" completion:^(NSDictionary *information) {
+        NSLog(@"StockInfo-Block: %@",information);
+    }];
+    [[SDStockManager sharedManager] stockPriceWithSymbol:@"IBM" completion:^(NSDictionary *information) {
+        NSLog(@"StockPrice-Block: %@",information);
+    }];
     
-//    NSArray *stocks = [NSArray arrayWithObjects:@"GOOG",@"AAPL",@"IBM", nil];
+    NSArray *stocks = [NSArray arrayWithObjects:@"GOOG",@"AAPL",@"IBM", nil];
+
+    //Array Support
+    [[SDStockManager sharedManager] stockPriceWithSymbols:stocks completion:^(NSDictionary *information) {
+        NSLog(@"StockPrice-Array: %@",information);
+    }];
+    [[SDStockManager sharedManager] stockInfoWithSymbols:stocks completion:^(NSDictionary *information) {
+        NSLog(@"StockInfo-Array: %@",information);
+    }];
 //
-//    //Array Support
-//    [[SDStockManager sharedManager] stockPriceWithSymbols:stocks completion:^(NSDictionary *information) {
-//        NSLog(@"StockPrice-Array: %@",information);
-//    }];
-//    [[SDStockManager sharedManager] stockInfoWithSymbols:stocks completion:^(NSDictionary *information) {
-//        NSLog(@"StockInfo-Array: %@",information);
-//    }];
-//    
 }
 
 #pragma mark - Table View
@@ -96,7 +96,6 @@
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
-
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.textLabel.text = [[[_stocks objectAtIndex:indexPath.row]  valueForKey:@"Symbol"] description];
